@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+		<div class="alert alert-danger alert-dismissible fade" role="alert">
+		  {{ error }}
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	    <form action="{{ url_for('resolve') }}" method="post">
+		    <div class="form-row">
+			    <div class="form-group col-md-12">
+			      <label for="fx">Funcion</label>
+			      <input type="text" class="form-control" id="fx" name='fx' placeholder="Digite la ecuacion" required>
+			    </div>
+		    </div>
+		    <div class="form-row">
+			    <div class="form-group col-md-3">
+			      <label for="x0">X0</label>
+			      <input type="text" class="form-control" id="x0" name='x0' placeholder="Digite X0" required>
+			    </div>
+			    <div class="form-group col-md-3">
+			      <label for="x1">X1</label>
+			      <input type="text" class="form-control" id="x1" name='x1' placeholder="Digite X1" required>
+			    </div>
+			    <div class="form-group col-md-3">
+			      <label for="tol">Margen de error</label>
+			      <input type="text" class="form-control" id="tol" name='tol' placeholder="Digite el margen de error" required>
+			    </div>
+			    <div class="form-group col-md-3">
+			      <label for="iteracion">Iteraciones</label>
+			      <input type="number" class="form-control" id="iteracion"  name='iteracion' placeholder="Digite la cantidad maxima de iteraciones" required>
+			    </div>
+		    </div>
+		    <button type="submit" class="btn btn-primary">Submit</button>
+	    </form>
+{% endblock %}
+
+{% block js %}
+ {% endblock %}
+
+

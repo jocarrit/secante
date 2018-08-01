@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="form-group">
+   	  <div class="col">
+		  <div class="text-success h3 text-center">Función:</div>
+	  </div>
+   	  <div class="col">
+		  <div class="text-success h3">$${{ fx }}$$</div>
+	  </div>
+  </div>
+  <div class="form-group">
+   	  <div class="col">
+		  <div class="text-danger h3 text-center">Solucion:  {{ '%0.6f'| format(result) }}</div>
+	  </div>
+  </div>
+  <div class="form-group">
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+   <i class="fas fa-arrow-circle-down"></i> Resultados de Iteraciones
+    </a>
+  <a class="btn btn-primary" data-toggle="" data-target="" aria-expanded="false" role="button" aria-controls="collapseExample" href="/index">
+    <i class="fas fa-home"></i> Inicio
+  </a>
+	<div class="collapse" id="collapseExample">
+	  <div class="card card-body">
+	    <ol>
+			{% for result in results %}
+			  <li>{{ result }}</li>
+			{% endfor %}
+	    </ol>
+	  </div>
+	</div>
+  </div>
+
+</div>
+</div>
+<div class="row">
+	<div class="col">
+		  <div class="form-group">
+			<div  id = "calculator" style="height:400px">
+
+			</div>
+		  </div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    <script src="https://www.desmos.com/api/v1.1/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+		<script>
+		  var  elt  =  document.getElementById ( 'calculator' );
+		  var  calculator  =  Desmos.GraphingCalculator ( elt,{  autosize :  true  } );
+		  calculator.setExpression ({ id : 'graph1' ,  latex :'y={{ fx }}'});
+		  var xvalues = {{results}};
+		  var yvalues=[],b={{results|length}};while(b--)yvalues[b]=0;
+
+		 calculator.setExpression({
+		        id: 'table1',
+		        type: 'table',
+		        columns: [
+		          {latex: 'x', values: xvalues},
+		          {latex: 'y', values: yvalues}
+		        ]
+		      });
+		</script>
+{% endblock %}
