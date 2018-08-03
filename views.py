@@ -1,5 +1,5 @@
 from flask import request, redirect, render_template, url_for
-from app import app
+##from app import app
 from py_expression_eval import Parser
 from app import secante
 
@@ -29,3 +29,4 @@ def resolve():
         error = 'Oopss! ... Algo salio Mal'
         return render_template('index.html', error=error)
 
+# x^3+1.2105*x^2+1.421*x−2.3685
