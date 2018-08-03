@@ -1,9 +1,7 @@
-from flask import Flask,request, redirect, render_template, url_for
-##from app import app
+from flask import request, redirect, render_template, url_for
+from app import app
 from py_expression_eval import Parser
-import secante
-
-app = Flask(__name__)
+from app import secante
 
 @app.route('/')
 @app.route('/index')
