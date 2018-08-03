@@ -29,4 +29,3 @@ def resolve():
         error = 'Oopss! ... Algo salio Mal'
         return render_template('index.html', error=error)
 
-# x^3+1.2105*x^2+1.421*x−2.3685
